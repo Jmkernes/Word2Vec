@@ -36,7 +36,7 @@ including batch size, window size, number of negative samples, epochs, the usual
 The model is basically skipgrams plus negative sampling with word dropout. The main task is given a target word in a sentence, to predict its surrounding context words within some window size.
 Window size is the full window, so a size of 11 means to include the left 5 and right 5 words. To speed up computation, we use negative sampling, where the loss is sparse sigmoid cross entropy, i.e. predicting the probability of any class indepednently,
 with respect to num_ns negative samples drawn randomly. The negative samples are drawn from a distribution $P(x) \sim f(x)^{3/4}$, proportional to the 3/4 power of any tokens frequency in the corpus.
-We also implement token dropping according to the formula $P_\text{drop}(x) = 1-\sqrt{t/f(x)}$, where the threshold t is a hyperparameter with default $t=10^{-5}$ and $f$ is again token frequency.
+We also implement token dropping according to the formula <img src="https://render.githubusercontent.com/render/math?math=P_\text{drop}(x) = 1-\sqrt{t/f(x)}">, where the threshold t is a hyperparameter with default $t=10^{-5}$ and $f$ is again token frequency.
 Words with frequency above $t$ will usually be dropped, and below $t$ kept. You should aim to set this to be at around the 20th percentile of most common occuring tokens.
 This helps learn rare words and can speed up training. However, if the threshold is too low the model discards too many words, so we give the option of annealing the threshold. You can choose a high value like $t=0.1$, then lower $t$ during training.
 
