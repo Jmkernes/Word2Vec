@@ -1,6 +1,11 @@
 # Word2Vec
 <em>Implementation of the paper "Distributed representation of words and phrases and their compositionality":</em> [link](https://arxiv.org/pdf/1310.4546.pdf)
 
+## Requirements
+Tensorflow 2.0+
+Tensorflow text (install via pip install tensorflow_text)
+numpy
+
 ## Quick start
 A pretrained model and its info is saved in the folder "Embeddings". To get started playing around with those learned embeddings, simply run the find_analogies script
 ```
